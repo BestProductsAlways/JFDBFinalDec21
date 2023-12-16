@@ -1,14 +1,14 @@
 // API endpoint to fetch data based on selected values
 router.get('/fetchData', async (req, res) => {
     try {
-        const { valueA, valueB, valueC, valueD } = req.query;
+        const { speciality, experience_level, number_takeouts, sex } = req.query;
 
         let result;
 
         if (databaseType === 'mongodb') {
-            result = await databaseUtils.getDataFromMongoDB(valueA, valueB, valueC, valueD);
+            result = await databaseUtils.getDataFromMongoDB(speciality, experience_level, number_takeouts, sex);
         } else if (databaseType === 'postgresql') {
-            result = await databaseUtils.getDataFromPostgreSQL(valueA, valueB, valueC, valueD);
+            result = await databaseUtils.getDataFromPostgreSQL(speciality, experience_level, number_takeouts, sex);
         } else {
             throw new Error('Invalid database type. Choose either "mongodb" or "postgresql".');
         }
