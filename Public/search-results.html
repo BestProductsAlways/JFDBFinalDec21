@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results</title>
+  <!-- Add the Bootstrap CSS stylesheet link -->
+  <link rel="stylesheet" href="path/to/bootstrap.css">
+  <style>
+    /* Add your custom styles here */
+    .result-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Your search input and other content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+      </div>
+    </div>
+  </div>
+
+  <!-- Container to display search results -->
+  <div class="container result-container">
+    <div class="row" id="resultsContainer">
+      <!-- Search results will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <!-- Add the Bootstrap JavaScript and its dependencies -->
+  <script src="path/to/bootstrap.bundle.min.js"></script>
+  <!-- Your other script tags -->
+
+  <script>
+    // Mock data for demonstration purposes
+    const mockResults = [
+      { title: 'Result 1', description: 'Description for Result 1' },
+      { title: 'Result 2', description: 'Description for Result 2' },
+      { title: 'Result 3', description: 'Description for Result 3' },
+    ];
+
+    // Function to display search results
+    function displaySearchResults(results) {
+      const resultsContainer = document.getElementById('resultsContainer');
+
+      // Clear previous results
+      resultsContainer.innerHTML = '';
+
+      // Loop through results and create HTML elements
+      results.forEach(result => {
+        const resultCard = document.createElement('div');
+        resultCard.classList.add('col-md-6', 'mb-3');
+
+        resultCard.innerHTML = `
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">${result.title}</h5>
+              <p class="card-text">${result.description}</p>
+            </div>
+          </div>
+        `;
+
+        resultsContainer.appendChild(resultCard);
+      });
+    }
+
+    // Function to simulate searching (replace with actual search logic)
+    function performSearch(query) {
+      // For demonstration purposes, just use the mock results
+      displaySearchResults(mockResults);
+    }
+
+    // Event listener for the search input
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function () {
+      const query = this.value.trim();
+      performSearch(query);
+    });
+  </script>
+
+</body>
+</html>
